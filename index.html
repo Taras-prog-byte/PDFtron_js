@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic WebViewer</title>
+</head>
+
+<!-- Import WebViewer as a script tag -->
+<script src='WebViewer/lib/webviewer.min.js'></script>
+<body>
+<div id='viewer' style='width: 1024px; height: 600px; margin: 0 auto;'></div>
+</body>
+</html>
+
+<script>
+    WebViewer({
+        path: 'WebViewer/lib',
+        // initialDoc: 'shared/bonk.pdf'
+        // initialDoc: 'https://pdftron.s3.amazonaws.com/downloads/pl/webviewer-demo.pdf',
+        // initialDoc:'',
+        webviewerServerURL: 'http://localhost:8090/',
+
+    }, document.getElementById('viewer'))
+        .then(instance => {
+            const { Feature } = instance.UI;
+            instance.UI.enableFeatures([Feature.FilePicker]);
+        });
+</script>
